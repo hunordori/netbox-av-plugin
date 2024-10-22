@@ -19,5 +19,5 @@ class AVInterfaceTable(NetBoxTable):
     class Meta(NetBoxTable.Meta):
         model = AVInterface
 
-        fields = ("pk", "id", "name", "enabled", "device", "videorate", "medium", "direction", "comments", "tags")
+        fields = ("pk", "id", "name", "enabled", "device", "videorate", "medium", "signaltype","direction", "comments", "tags")
         default_columns = ("name","medium", "device", "videorate", "medium")

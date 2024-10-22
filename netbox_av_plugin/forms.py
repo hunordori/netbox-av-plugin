@@ -25,7 +25,17 @@ class AVInterfaceForm(NetBoxModelForm):
     class Meta:
         model = AVInterface
         comments = CommentField()
-        fields = ("name", "enabled", "device", "videorate", "medium", "direction", "comments", "tags")
+        fields = (
+            "name",
+            "enabled",
+            "device",
+            "videorate",
+            "signaltype",
+            "medium",
+            "direction",
+            "comments",
+            "tags",
+            )
 
 class AVInterfaceFilterForm(NetBoxModelFilterSetForm):
 

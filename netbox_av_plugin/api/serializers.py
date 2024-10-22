@@ -10,7 +10,7 @@ class AVInterfaceSerializer(NetBoxModelSerializer):
             view_name='plugins-api:netbox_av_plugin-api:avinterface-detail'
         )
         fields = (
-            'id', 'display', 'name', 'enabled', 'device', 'videorate', 'medium', 'direction', 'comments', 'tags', 'created',
+            'id', 'display', 'name', 'enabled', 'device', 'videorate', 'signaltype', 'medium', 'direction', 'comments', 'tags', 'created',
             'last_updated'
         )
         
