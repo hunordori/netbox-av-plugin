@@ -8,6 +8,7 @@ __version__ = "0.1.0"
 from netbox.plugins import PluginConfig
 
 
+
 class AVConfig(PluginConfig):
     name = "netbox_av_plugin"
     verbose_name = "NetBox AV Plugin"

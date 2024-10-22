@@ -24,7 +24,9 @@ class AVInterfaceView(generic.ObjectView):
     queryset = models.AVInterface.objects.all()
 
 class AVInterfaceListView(generic.ObjectListView):
-    queryset = models.AVInterface.objects.all()
+    queryset = models.AVInterface.objects.annotate(
+        interface_count=Count('name')
+    )
     table = tables.AVInterfaceTable
 
 class AVInterfaceEditView(generic.ObjectEditView):

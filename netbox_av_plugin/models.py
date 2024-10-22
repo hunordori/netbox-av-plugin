@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.apps import apps
 from django.contrib.postgres.fields import ArrayField
+from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
 
 from netbox.models import NetBoxModel
 from netbox.choices import ColorChoices
@@ -27,7 +28,7 @@ class AV(NetBoxModel):
     def get_absolute_url(self):
         return reverse("plugins:netbox_av_plugin:av", args=[self.pk])
 
-class MediumChoice(ChoiceSet):
+class MediumChoices(ChoiceSet):
     CHOICES = [
         ('SDI', 'SDI'),
         ('HDMI', 'HDMI'),
@@ -95,6 +96,13 @@ class AVInterface(NetBoxModel, TrackingModelMixin):
         default=True
     )
 
+    label = models.CharField(
+        verbose_name=('label'),
+        max_length=60,
+        blank=True,
+        help_text=('Physical label')
+    )
+
     videorate = models.CharField(
         verbose_name=('videorate'),
         max_length=50,
@@ -106,7 +114,7 @@ class AVInterface(NetBoxModel, TrackingModelMixin):
     medium = models.CharField(
         verbose_name=('medium'),
         max_length=50,
-        choices=MediumChoice,
+        choices=MediumChoices,
         blank=True,
         help_text=('Connector medium like SDI, HDMI...')
         )
@@ -122,6 +130,8 @@ class AVInterface(NetBoxModel, TrackingModelMixin):
 
     class Meta:
         ordering = ("name",)
+        verbose_name = "AV Interface"
+        verbose_name_plural = "AV Interfaces"
 
     # Override ComponentModel._name to specify naturalize_interface function
     _name = NaturalOrderingField(
@@ -131,7 +141,7 @@ class AVInterface(NetBoxModel, TrackingModelMixin):
         blank=True
     )
 
-    clone_fields = ('videorate', 'type', 'rate')
+    clone_fields = ('device','videorate', 'medium')
 
     @classmethod
     def get_prerequisite_models(cls):
@@ -142,4 +152,3 @@ class AVInterface(NetBoxModel, TrackingModelMixin):
 
     def get_absolute_url(self):
         return reverse("plugins:netbox_av_plugin:avinterface", args=[self.pk])
-    
