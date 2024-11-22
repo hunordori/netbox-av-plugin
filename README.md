@@ -7,6 +7,14 @@ Netbox Plugin for Audio Video interfaces
 * Documentation: https://hunordori.github.io/netbox-av-plugin/
 
 
+## Disclosure
+
+I am not a Django developer. This project encouraged me to learn more about the framework.
+
+## The Idea
+
+[Netbox](https://netboxlabs.com/) handles devices, network interfaces and cables well. Me and my collegues work with a lot of video equipment which uses SDI and other video interfaces. Our idea is to document broadcast audio and video equipment racks in Netbox.
+
 ## Features
 
 The features the plugin provides should be listed here.
