@@ -18,19 +18,6 @@ from utilities.tracking import TrackingModelMixin
 
 from .choices import *
 
-class AV(NetBoxModel):
-    name = models.CharField(max_length=100)
-
-    class Meta:
-        ordering = ("name",)
-
-    def __str__(self):
-        return self.name
-
-    def get_absolute_url(self):
-        return reverse("plugins:netbox_av_plugin:av", args=[self.pk])
-
-
 class AVInterface(NetBoxModel, TrackingModelMixin):
     """
     A network interface within a Device. A physical Interface can connect to exactly one other Interface.
@@ -114,3 +101,4 @@ class AVInterface(NetBoxModel, TrackingModelMixin):
 
     def get_absolute_url(self):
         return reverse("plugins:netbox_av_plugin:avinterface", args=[self.pk])
+

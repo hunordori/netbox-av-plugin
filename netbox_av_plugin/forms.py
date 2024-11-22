@@ -4,13 +4,8 @@ from netbox.forms import NetBoxModelForm, NetBoxModelFilterSetForm
 from utilities.forms.fields import CommentField, DynamicModelChoiceField
 from dcim.models import Device, Interface, Region, Site, SiteGroup
 
-from .models import AV, AVInterface
+from .models import AVInterface
 
-
-class AVForm(NetBoxModelForm):
-    class Meta:
-        model = AV
-        fields = ("name", "tags")
 
 class AVInterfaceForm(NetBoxModelForm):
     device = DynamicModelChoiceField(

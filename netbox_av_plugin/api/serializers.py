@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from netbox.api.serializers import NetBoxModelSerializer
-from ..models import AV, AVInterface
+from ..models import AVInterface
 
 class AVInterfaceSerializer(NetBoxModelSerializer):
 

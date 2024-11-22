@@ -7,22 +7,6 @@ from utilities.views import ViewTab, register_model_view
 from . import filtersets, forms, models, tables
 
 
-class AVView(generic.ObjectView):
-    queryset = models.AV.objects.all()
-
-class AVListView(generic.ObjectListView):
-    queryset = models.AV.objects.all()
-    table = tables.AVTable
-
-class AVEditView(generic.ObjectEditView):
-    queryset = models.AV.objects.all()
-    form = forms.AVForm
-
-class AVDeleteView(generic.ObjectDeleteView):
-    queryset = models.AV.objects.all()
-
-
-
 class AVInterfaceView(generic.ObjectView):
     queryset = models.AVInterface.objects.all()
 
